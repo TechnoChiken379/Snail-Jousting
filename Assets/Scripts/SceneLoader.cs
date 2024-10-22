@@ -7,8 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     private void Update()
     {
-        // Check if Escape is pressed and the "Game" scene is loaded
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetSceneByName("Game").isLoaded)
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetSceneByName("MainScene").isLoaded)
         {
             SceneManager.LoadScene("MainMenu");
         }
@@ -20,13 +19,12 @@ public class SceneLoader : MonoBehaviour
         PlayGame(level);
     }
 
-    // Directly load the game scene without delay
     public void PlayGame(int level)
     {
         switch (level)
         {
             case 0:
-                SceneManager.LoadScene("Game");
+                SceneManager.LoadScene("MainScene");
                 break;
         }
     }
