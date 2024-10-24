@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Data;
 
 public class Dialogue : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Dialogue : MonoBehaviour
     public float textSpeed;
 
     private int index;
+    private int linesRead;
 
     // Start is called before the first frame update
     void Start()
@@ -52,13 +54,18 @@ public class Dialogue : MonoBehaviour
 
     void NextLine()
     {
-        if (index < lines.Length)
+        if (linesRead < lines.Length)
         {
             index++;
+            linesRead++;
             textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
+            if (linesRead < lines.Length - 1)
+            {
+                StartCoroutine(TypeLine());
+            }
         }
-        else
+        
+        if (linesRead == lines.Length)
         {
             gameObject.SetActive(false);
         }
